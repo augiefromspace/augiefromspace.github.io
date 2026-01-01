@@ -1,67 +1,93 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-	<title>AuGiE's Shenanigans</title>
-	<style>
-body {
-  background-color: black;
-}
-
-div {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: white;
-  width: 1000px;
-  padding: 100px;
-  margin: 20px;
-  text-align: center;
-  margin: auto;
-  width: 60%;
-}
-
-footer {
-  text-align: center;
-  colour: white;
-
-}
-
-button {
-	text-align: center;
-	color: blue;
-	}
-
-h1 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  text-align: center;
-}
-
-h3 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-  text-align: center;
-}
-
-h2 {
-  font-family: Arial, Helvetica, sans-serif;
-  color: white;
-  text-align: center;
-}
-
-p {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Delta Aerospace</title>
+  <style>
+    body { margin:0; font-family:Arial, sans-serif; background:#0a0a0a; color:white; }
+    header { display:flex; justify-content:space-between; align-items:center; padding:20px; background:#111; }
+    nav a { margin-left:20px; color:white; text-decoration:none; font-size:14px; }
+    .hero { padding:80px 20px; max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; gap:40px; }
+    .hero-text { flex:1; min-width:280px; }
+    .hero-visual { flex:1; min-width:280px; background:#1a1a1a; padding:20px; border-radius:12px; }
+    h1, h2, h3, h4 { margin:0 0 15px 0; }
+    section { padding:60px 20px; max-width:1200px; margin:auto; }
+    .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; }
+    .card { background:#1a1a1a; padding:20px; border-radius:12px; }
+    footer { text-align:center; padding:30px; background:#111; margin-top:40px; }
+    .btn { padding:10px 20px; border-radius:6px; text-decoration:none; font-weight:bold; }
+    .btn-primary { background:#4f46e5; color:black; }
+    .btn-outline { border:1px solid #444; color:white; }
+  </style>
 </head>
-
 <body>
-	<h1>AuGiE's Shenanigans</h1>
-	<h2>You can find all of my lovely, internet-based games right here!</h2>
-	<h2>My new project, Delta Aerospace, is now live, at deltaaero.space, check it out!</h2>
-	<div><h3>This weeks top internet pick! <br></h3>Half Cat Rocketry! (https://www.halfcatrocketry.com/)<br>Half Cat Rocketry is a awesome resource to anyone building a liquid amatuer rocket! Check them out!</div>
-	<div>Hank R1, is a flight computer for servo deployment and locating rockets. More details at the <a href="https://github.com/BigCart69421/Hank-Dual-Deployment">Github repo</a>, Or buy at the <a href="https://deltaaerospace.bigcartel.com/hank-r1">Online Store</a></div>
-	<div>The Scamazon Application Shop is a joint effort between Scamazon themselves, sussy34 and myself. You can find my Scratch games on here, as I will only list my HTML5 Games or Python 3 projects here.<br> <a href='https://sites.google.com/view/application-shop'><button>Application Shop</button></a></div></body>
-    <div>Play "The Word Game", a simple game where you have to add prefixes and base words to make the daily word!<br><a href="https://bigcart69421.github.io/TheWordGame/"><button>The Word Game.</button></a></div>
-<footer>
-	<p>Contact Me at admin@deltaaero.space and have fun!</p>
-</footer>
-</body>
+
+<header>
+  <div style="display:flex; align-items:center; gap:10px;">
+    <div style="width:40px; height:40px; background:linear-gradient(135deg,#00e5ff,#5865f2); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; color:black;">Δ</div>
+    <div>
+      <h2 style="margin:0; font-size:18px;">Delta Aerospace</h2>
+      <p style="margin:0; font-size:12px; opacity:0.7;">Propulsion & avionics engineering</p>
+    </div>
+  </div>
+  <nav>
+    <a href="#about">About</a>
+    <a href="#products">Products</a>
+    <a href="#services">Services</a>
+    <a href="#team">Team</a>
+    <a href="#contact" class="btn btn-primary">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-text">
+    <h1 style="font-size:36px; font-weight:800;">Launch‑ready avionics & propulsion designed for makers who test.</h1>
+    <p style="max-width:500px; opacity:0.8;">We design flight computers, rocket hardware and testing systems for hobbyists, students, and startups. Real data, real engineering, no corporate vibes.</p>
+    <div style="margin-top:20px; display:flex; gap:10px;">
+      <a href="#products" class="btn btn-primary">Browse Kits</a>
+      <a href="#contact" class="btn btn-outline">Request Quote</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <h3>Delta Flight Computer v1</h3>
+    <p style="opacity:0.8; font-size:14px;">BMI270 + BME280 + ATSAMD21E18A — SWD & USB onboard.</p>
+  </div>
+</section>
+
+<section id="about">
+  <h2>Who We Are</h2>
+  <p style="max-width:700px; opacity:0.8;">Delta Aerospace builds practical, test‑driven rocketry hardware. From avionics to static test rigs, we blend hobbyist energy with real aerospace methodology.</p>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="card-grid">
+    <div class="card">
+      <h3><a href="https://github.com/Delta-Aerospace/Hank-Dual-Deployment" style="color:#7ab6ff; text-decoration:none;">Hank Dual Deployment Flight Computer</a></h3>
+      <p>ESP32-C3 based dual-deployment flight computer featuring:</p>
+      <ul>
+        <li>u-blox MAX-M10S GPS</li>
+        <li>MS5611 barometric altimeter</li>
+        <li>Dual-servo deployment channels</li>
+        <li>UART telemetry compatibility</li>
+        <li>MIT licensed hardware + firmware</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <div class="card-grid">
+    <div class="card"><h3>Avionics Design</h3><p>Custom flight computers and firmware.</p></div>
+    <div class="card"><h3>Test Stand Engineering</h3><p>Load cells, DAQ, and static fire setups.</p></div>
+    <div class="card"><h3>Workshops & Consulting</h3><p>Launch planning, safety, and training.</p></div>
+  </div>
+</section>
+
+
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: admin@deltaaero.space
