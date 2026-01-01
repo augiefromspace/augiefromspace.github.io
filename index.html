@@ -3,91 +3,174 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delta Aerospace</title>
+  <title>Delta Aerospace | Flight Systems</title>
   <style>
-    body { margin:0; font-family:Arial, sans-serif; background:#0a0a0a; color:white; }
-    header { display:flex; justify-content:space-between; align-items:center; padding:20px; background:#111; }
-    nav a { margin-left:20px; color:white; text-decoration:none; font-size:14px; }
-    .hero { padding:80px 20px; max-width:1200px; margin:auto; display:flex; flex-wrap:wrap; gap:40px; }
-    .hero-text { flex:1; min-width:280px; }
-    .hero-visual { flex:1; min-width:280px; background:#1a1a1a; padding:20px; border-radius:12px; }
-    h1, h2, h3, h4 { margin:0 0 15px 0; }
-    section { padding:60px 20px; max-width:1200px; margin:auto; }
-    .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:20px; }
-    .card { background:#1a1a1a; padding:20px; border-radius:12px; }
-    footer { text-align:center; padding:30px; background:#111; margin-top:40px; }
-    .btn { padding:10px 20px; border-radius:6px; text-decoration:none; font-weight:bold; }
-    .btn-primary { background:#4f46e5; color:black; }
-    .btn-outline { border:1px solid #444; color:white; }
+    :root {
+      --primary: #4f46e5;
+      --bg: #0a0a0a;
+      --card-bg: #161616;
+      --text: #ffffff;
+      --accent: #00e5ff;
+    }
+
+    body { 
+      margin:0; 
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
+      background: var(--bg); 
+      color: var(--text); 
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header { 
+      display:flex; 
+      justify-content:space-between; 
+      align-items:center; 
+      padding:15px 40px; 
+      background: rgba(17, 17, 17, 0.9); 
+      backdrop-filter: blur(10px);
+      position: sticky; 
+      top: 0; 
+      z-index: 100;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo-container { display:flex; align-items:center; gap:12px; }
+    .logo-img { width: 42px; height: 42px; border-radius: 8px; }
+
+    nav a { margin-left:25px; color:var(--text); text-decoration:none; font-size:14px; font-weight: 500; opacity: 0.8; transition: 0.3s; }
+    nav a:hover { opacity: 1; color: var(--accent); }
+
+    section { padding:80px 20px; max-width:1100px; margin:auto; }
+
+    .hero { display:flex; flex-wrap:wrap; gap:50px; align-items: center; padding-top: 100px; }
+    .hero-text { flex:1; min-width:300px; }
+    .hero-text h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin-bottom: 20px; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    
+    .hero-visual { 
+      flex:1; 
+      min-width:300px; 
+      background: var(--card-bg); 
+      padding:30px; 
+      border-radius:16px; 
+      border: 1px solid #222;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
+
+    .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:25px; }
+    .card { background: var(--card-bg); padding:25px; border-radius:12px; border: 1px solid #222; transition: 0.3s; }
+    .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+
+    /* Form Styles */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid #222; }
+    .form-group { margin-bottom: 20px; }
+    label { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; opacity: 0.6; }
+    input, textarea { 
+      width: 100%; padding: 12px; background: #000; border: 1px solid #333; 
+      color: white; border-radius: 8px; font-family: inherit;
+    }
+    input:focus, textarea:focus { outline: none; border-color: var(--primary); }
+
+    .btn { padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: #6366f1; box-shadow: 0 0 20px rgba(79, 70, 229, 0.4); }
+    .btn-outline { border: 1px solid #333; color:white; }
+    .btn-outline:hover { background: #222; }
+
+    @media (max-width: 768px) {
+      .contact-wrapper { grid-template-columns: 1fr; }
+      header { padding: 15px 20px; }
+      nav { display: none; } /* Simplified for mobile */
+    }
   </style>
 </head>
 <body>
 
 <header>
-  <div style="display:flex; align-items:center; gap:10px;">
-    <div style="width:40px; height:40px; background:linear-gradient(135deg,#00e5ff,#5865f2); border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold; color:black;">Δ</div>
+  <div class="logo-container">
+    <img src="images/logo.jpg" alt="Delta Logo" class="logo-img">
     <div>
-      <h2 style="margin:0; font-size:18px;">Delta Aerospace</h2>
-      <p style="margin:0; font-size:12px; opacity:0.7;">Propulsion & avionics engineering</p>
+      <h2 style="margin:0; font-size:18px; letter-spacing: 1px;">DELTA AEROSPACE</h2>
+      <p style="margin:0; font-size:11px; opacity:0.5; text-transform: uppercase;">Flight Systems & Propulsion</p>
     </div>
   </div>
   <nav>
     <a href="#about">About</a>
-    <a href="#products">Products</a>
-    <a href="#services">Services</a>
-    <a href="#team">Team</a>
-    <a href="#contact" class="btn btn-primary">Contact</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact" class="btn btn-outline" style="padding: 8px 16px;">Contact</a>
   </nav>
 </header>
 
 <section class="hero">
   <div class="hero-text">
-    <h1 style="font-size:36px; font-weight:800;">Launch‑ready avionics & propulsion designed for makers who test.</h1>
-    <p style="max-width:500px; opacity:0.8;">We design flight computers, rocket hardware and testing systems for hobbyists, students, and startups. Real data, real engineering, no corporate vibes.</p>
-    <div style="margin-top:20px; display:flex; gap:10px;">
-      <a href="#products" class="btn btn-primary">Browse Kits</a>
-      <a href="#contact" class="btn btn-outline">Request Quote</a>
+    <h1>Hardware for the next generation of flight.</h1>
+    <p style="font-size: 18px; opacity: 0.7; margin-bottom: 30px;">We build flight computers and static test instrumentation for people who actually like to burn ammonium perchlorate.</p>
+    <div style="display:flex; gap:15px;">
+      <a href="#projects" class="btn btn-primary">View Docs</a>
+      <a href="#contact" class="btn btn-outline">Custom Engineering</a>
     </div>
   </div>
   <div class="hero-visual">
-    <h3>Delta Flight Computer v1</h3>
-    <p style="opacity:0.8; font-size:14px;">BMI270 + BME280 + ATSAMD21E18A — SWD & USB onboard.</p>
+    <h3 style="color: var(--accent);">System Status: Nominal</h3>
+    <p style="font-family: monospace; font-size: 13px; opacity: 0.8; background: #000; padding: 15px; border-radius: 8px;">
+      > Initializing Hank-DD...<br>
+      > Baro: MS5611 [ONLINE]<br>
+      > GPS: MAX-M10S [LOCKED]<br>
+      > Pyros: Continuity OK<br>
+      > Ready for ignition.
+    </p>
   </div>
 </section>
 
 <section id="about">
-  <h2>Who We Are</h2>
-  <p style="max-width:700px; opacity:0.8;">Delta Aerospace builds practical, test‑driven rocketry hardware. From avionics to static test rigs, we blend hobbyist energy with real aerospace methodology.</p>
+  <h2 style="font-size: 32px;">Real Engineering. No Fluff.</h2>
+  <p style="max-width:800px; font-size: 18px; opacity: 0.8;">Delta Aerospace was born from a desire for better data. Whether it's dual-deployment logic or high-speed load cell integration, we build tools that handle the vibration, G-forces, and heat of actual flight.</p>
 </section>
 
 <section id="projects">
-  <h2>Projects</h2>
+  <h2 style="margin-bottom: 30px;">Active Projects</h2>
   <div class="card-grid">
     <div class="card">
-      <h3><a href="https://github.com/Delta-Aerospace/Hank-Dual-Deployment" style="color:#7ab6ff; text-decoration:none;">Hank Dual Deployment Flight Computer</a></h3>
-      <p>ESP32-C3 based dual-deployment flight computer featuring:</p>
-      <ul>
-        <li>u-blox MAX-M10S GPS</li>
-        <li>MS5611 barometric altimeter</li>
-        <li>Dual-servo deployment channels</li>
-        <li>UART telemetry compatibility</li>
-        <li>MIT licensed hardware + firmware</li>
-      </ul>
+      <h3 style="margin-top:0;">Hank Dual Deployment</h3>
+      <p style="font-size: 14px; opacity: 0.8;">Our flagship ESP32-C3 flight computer. Features GPS tracking, barometric deployment, and servo control for advanced recovery.</p>
+      <a href="https://github.com/Delta-Aerospace/Hank-Dual-Deployment" style="color:var(--accent); text-decoration: none; font-size: 14px; font-weight: bold;">Github Repo →</a>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">Static Test Rigs</h3>
+      <p style="font-size: 14px; opacity: 0.8;">Precision DAQ systems for measuring motor thrust curves with sub-millisecond latency. Built for reliability.</p>
+      <span style="font-size: 12px; color: #555; font-weight: bold; text-transform: uppercase;">Under Development</span>
     </div>
   </div>
 </section>
 
-<section id="services">
-  <h2>Services</h2>
-  <div class="card-grid">
-    <div class="card"><h3>Avionics Design</h3><p>Custom flight computers and firmware.</p></div>
-    <div class="card"><h3>Test Stand Engineering</h3><p>Load cells, DAQ, and static fire setups.</p></div>
-    <div class="card"><h3>Workshops & Consulting</h3><p>Launch planning, safety, and training.</p></div>
+<section id="contact">
+  <div class="contact-wrapper">
+    <div>
+      <h2>Let's talk shop.</h2>
+      <p style="opacity: 0.7;">Have questions about the Hank computer? Need a custom avionics solution? Drop a line.</p>
+      <p style="margin-top: 20px; font-weight: bold; color: var(--accent);">admin@deltaaero.space</p>
+    </div>
+    
+    <form action="https://formspree.io/f/augie@deltaaero.space" method="POST">
+      <div class="form-group">
+        <label>Return Email</label>
+        <input type="email" name="_replyto" placeholder="you@example.com" required>
+      </div>
+      <div class="form-group">
+        <label>Project / Inquiry</label>
+        <textarea name="message" placeholder="What are you building?" required></textarea>
+      </div>
+      <input type="hidden" name="_subject" value="New Inquiry from Delta Aero Site">
+      <button type="submit" class="btn btn-primary" style="width: 100%;">Ignite Message</button>
+    </form>
   </div>
 </section>
 
+<footer>
+  <div style="max-width: 1100px; margin: auto; opacity: 0.5; font-size: 13px;">
+    <p>&copy; 2026 Delta Aerospace. Ad Astra per Aspera.</p>
+  </div>
+</footer>
 
-
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: admin@deltaaero.space
+</body>
+</html>
