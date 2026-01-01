@@ -58,10 +58,9 @@
     }
 
     .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:25px; }
-    .card { background: var(--card-bg); padding:25px; border-radius:12px; border: 1px solid #222; transition: 0.3s; }
+    .card { background: var(--card-bg); padding:25px; border-radius:12px; border: 1px solid #222; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
     .card:hover { border-color: var(--primary); transform: translateY(-5px); }
 
-    /* Form Styles */
     .contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid #222; }
     .form-group { margin-bottom: 20px; }
     label { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; opacity: 0.6; }
@@ -77,10 +76,12 @@
     .btn-outline { border: 1px solid #333; color:white; }
     .btn-outline:hover { background: #222; }
 
+    .tag { font-size: 10px; background: #333; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: inline-block; width: fit-content; }
+
     @media (max-width: 768px) {
       .contact-wrapper { grid-template-columns: 1fr; }
       header { padding: 15px 20px; }
-      nav { display: none; } /* Simplified for mobile */
+      nav { display: none; }
     }
   </style>
 </head>
@@ -104,41 +105,57 @@
 <section class="hero">
   <div class="hero-text">
     <h1>Hardware for the next generation of flight.</h1>
-    <p style="font-size: 18px; opacity: 0.7; margin-bottom: 30px;">We build flight computers and static test instrumentation for people who actually like to burn ammonium perchlorate.</p>
+    <p style="font-size: 18px; opacity: 0.7; margin-bottom: 30px;">High-reliability flight computers and C++ frameworks for dual-deployment rocketry and static fire testing.</p>
     <div style="display:flex; gap:15px;">
-      <a href="#projects" class="btn btn-primary">View Docs</a>
-      <a href="#contact" class="btn btn-outline">Custom Engineering</a>
+      <a href="#projects" class="btn btn-primary">Browse Source</a>
+      <a href="#contact" class="btn btn-outline">Request Quote</a>
     </div>
   </div>
   <div class="hero-visual">
     <h3 style="color: var(--accent);">System Status: Nominal</h3>
     <p style="font-family: monospace; font-size: 13px; opacity: 0.8; background: #000; padding: 15px; border-radius: 8px;">
-      > Initializing Hank-DD...<br>
+      > Initializing Moses-Hank Framework...<br>
       > Baro: MS5611 [ONLINE]<br>
       > GPS: MAX-M10S [LOCKED]<br>
-      > Pyros: Continuity OK<br>
-      > Ready for ignition.
+      > State: IDLE_ON_PAD<br>
+      > Ready for launch.
     </p>
   </div>
 </section>
 
 <section id="about">
-  <h2 style="font-size: 32px;">Real Engineering. No Fluff.</h2>
-  <p style="max-width:800px; font-size: 18px; opacity: 0.8;">Delta Aerospace was born from a desire for better data. Whether it's dual-deployment logic or high-speed load cell integration, we build tools that handle the vibration, G-forces, and heat of actual flight.</p>
+  <h2 style="font-size: 32px;">Built by Makers, Verified by Physics.</h2>
+  <p style="max-width:800px; font-size: 18px; opacity: 0.8;">We're tired of "black box" flight computers. Delta Aerospace builds open-source hardware and software that gives you full control over your recovery logic and telemetry data.</p>
 </section>
 
 <section id="projects">
   <h2 style="margin-bottom: 30px;">Active Projects</h2>
   <div class="card-grid">
     <div class="card">
-      <h3 style="margin-top:0;">Hank Dual Deployment</h3>
-      <p style="font-size: 14px; opacity: 0.8;">Our flagship ESP32-C3 flight computer. Features GPS tracking, barometric deployment, and servo control for advanced recovery.</p>
-      <a href="https://github.com/Delta-Aerospace/Hank-Dual-Deployment" style="color:var(--accent); text-decoration: none; font-size: 14px; font-weight: bold;">Github Repo →</a>
+      <div>
+        <span class="tag" style="color: var(--accent);">Software</span>
+        <h3 style="margin-top:0;">Moses-Hank-Framework</h3>
+        <p style="font-size: 14px; opacity: 0.8;">The official C++ / Arduino firmware framework for the Hank-DD. Features a modular state machine, sensor abstraction, and failsafe recovery logic.</p>
+      </div>
+      <a href="https://github.com/augiefromspace/Moses-Hank-Framework" target="_blank" style="color:var(--accent); text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 15px;">Github Repo →</a>
     </div>
+
     <div class="card">
-      <h3 style="margin-top:0;">Static Test Rigs</h3>
-      <p style="font-size: 14px; opacity: 0.8;">Precision DAQ systems for measuring motor thrust curves with sub-millisecond latency. Built for reliability.</p>
-      <span style="font-size: 12px; color: #555; font-weight: bold; text-transform: uppercase;">Under Development</span>
+      <div>
+        <span class="tag" style="color: #ffaa00;">Hardware</span>
+        <h3 style="margin-top:0;">Hank Dual Deployment</h3>
+        <p style="font-size: 14px; opacity: 0.8;">ESP32-C3 based PCB. Compact 2-layer design supporting GPS, dual servos, and high-G logging.</p>
+      </div>
+      <a href="https://github.com/Delta-Aerospace/Hank-Dual-Deployment" target="_blank" style="color:var(--accent); text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 15px;">Hardware Specs →</a>
+    </div>
+
+    <div class="card">
+      <div>
+        <span class="tag">In Dev</span>
+        <h3 style="margin-top:0;">Static Test Rigs</h3>
+        <p style="font-size: 14px; opacity: 0.8;">DAQ systems designed for load-cell integration to characterize custom solid motor thrust curves.</p>
+      </div>
+      <span style="font-size: 12px; color: #555; font-weight: bold; text-transform: uppercase; margin-top: 15px;">Beta Testing</span>
     </div>
   </div>
 </section>
@@ -147,27 +164,27 @@
   <div class="contact-wrapper">
     <div>
       <h2>Let's talk shop.</h2>
-      <p style="opacity: 0.7;">Have questions about the Hank computer? Need a custom avionics solution? Drop a line.</p>
-      <p style="margin-top: 20px; font-weight: bold; color: var(--accent);">admin@deltaaero.space</p>
+      <p style="opacity: 0.7;">Questions about the Moses framework or need custom avionics for your student team?</p>
+      <p style="margin-top: 20px; font-weight: bold; color: var(--accent);">augie@deltaaero.space</p>
     </div>
     
     <form action="https://formspree.io/f/mbdllogl" method="POST">
       <div class="form-group">
-        <label>Return Email</label>
-        <input type="email" name="_replyto" placeholder="you@example.com" required>
+        <label>Your Email</label>
+        <input type="email" name="_replyto" placeholder="engineer@deltaaero.space" required>
       </div>
       <div class="form-group">
-        <label>Project / Inquiry</label>
-        <textarea name="message" placeholder="What are you building?" required></textarea>
+        <label>Message</label>
+        <textarea name="message" placeholder="Technical specs or inquiry..." required></textarea>
       </div>
-      <input type="hidden" name="_subject" value="New Inquiry from Delta Aero Site">
+      <input type="hidden" name="_subject" value="New Moses/Hank Inquiry">
       <button type="submit" class="btn btn-primary" style="width: 100%;">Ignite Message</button>
     </form>
   </div>
 </section>
 
 <footer>
-  <div style="max-width: 1100px; margin: auto; opacity: 0.5; font-size: 13px;">
+  <div style="max-width: 1100px; margin: auto; opacity: 0.5; font-size: 13px; text-align: center;">
     <p>&copy; 2026 Delta Aerospace. Ad Astra per Aspera.</p>
   </div>
 </footer>
