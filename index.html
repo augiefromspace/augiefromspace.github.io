@@ -1,193 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Delta Aerospace | Flight Systems</title>
-  <style>
-    :root {
-      --primary: #4f46e5;
-      --bg: #0a0a0a;
-      --card-bg: #161616;
-      --text: #ffffff;
-      --accent: #00e5ff;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Augiefrom.space</title>
+<style>
+  /* Reset & basic styling */
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+  body { background: radial-gradient(circle at top, #0b0c10, #1f2833); color: #c5c6c7; line-height: 1.6; }
+  a { color: #66fcf1; text-decoration: none; }
+  a:hover { text-decoration: underline; }
 
-    body { 
-      margin:0; 
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; 
-      background: var(--bg); 
-      color: var(--text); 
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
+  /* Container */
+  .container { max-width: 900px; margin: 0 auto; padding: 2rem; }
 
-    header { 
-      display:flex; 
-      justify-content:space-between; 
-      align-items:center; 
-      padding:15px 40px; 
-      background: rgba(17, 17, 17, 0.9); 
-      backdrop-filter: blur(10px);
-      position: sticky; 
-      top: 0; 
-      z-index: 100;
-      border-bottom: 1px solid #222;
-    }
+  /* Hero */
+  .hero { text-align: center; padding: 4rem 1rem; }
+  .hero h1 { font-size: 3rem; color: #45a29e; }
+  .hero p { margin-top: 1rem; font-size: 1.2rem; color: #66fcf1; }
 
-    .logo-container { display:flex; align-items:center; gap:12px; }
-    .logo-img { width: 42px; height: 42px; border-radius: 8px; }
+  /* About */
+  .about { margin: 4rem 0; text-align: center; }
+  .about p { font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 
-    nav a { margin-left:25px; color:var(--text); text-decoration:none; font-size:14px; font-weight: 500; opacity: 0.8; transition: 0.3s; }
-    nav a:hover { opacity: 1; color: var(--accent); }
+  /* Projects */
+  .projects { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-bottom: 4rem; }
+  .project-card { background: #1f2833; padding: 1rem; border-radius: 12px; width: 250px; text-align: center; transition: transform 0.2s; }
+  .project-card:hover { transform: translateY(-5px); }
+  .project-card img { width: 100%; border-radius: 8px; }
+  .project-card h3 { margin: 0.5rem 0; color: #45a29e; }
+  .project-card p { font-size: 0.9rem; color: #c5c6c7; }
 
-    section { padding:80px 20px; max-width:1100px; margin:auto; }
+  /* Contact */
+  .contact { text-align: center; margin-bottom: 2rem; }
+  .socials { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1rem; }
+  .socials a { font-size: 1.5rem; }
 
-    .hero { display:flex; flex-wrap:wrap; gap:50px; align-items: center; padding-top: 100px; }
-    .hero-text { flex:1; min-width:300px; }
-    .hero-text h1 { font-size: clamp(32px, 5vw, 48px); line-height: 1.1; margin-bottom: 20px; background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    
-    .hero-visual { 
-      flex:1; 
-      min-width:300px; 
-      background: var(--card-bg); 
-      padding:30px; 
-      border-radius:16px; 
-      border: 1px solid #222;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-    }
+  /* Footer */
+  footer { text-align: center; padding: 1rem 0; border-top: 1px solid #45a29e; font-size: 0.9rem; color: #66fcf1; }
 
-    .card-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:25px; }
-    .card { background: var(--card-bg); padding:25px; border-radius:12px; border: 1px solid #222; transition: 0.3s; display: flex; flex-direction: column; justify-content: space-between; }
-    .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-
-    .contact-wrapper { display: grid; grid-template-columns: 1fr 1.5fr; gap: 40px; background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid #222; }
-    .form-group { margin-bottom: 20px; }
-    label { display: block; font-size: 13px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; opacity: 0.6; }
-    input, textarea { 
-      width: 100%; padding: 12px; background: #000; border: 1px solid #333; 
-      color: white; border-radius: 8px; font-family: inherit;
-    }
-    input:focus, textarea:focus { outline: none; border-color: var(--primary); }
-
-    .btn { padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; display: inline-block; transition: 0.3s; border: none; cursor: pointer; }
-    .btn-primary { background: var(--primary); color: white; }
-    .btn-primary:hover { background: #6366f1; box-shadow: 0 0 20px rgba(79, 70, 229, 0.4); }
-    .btn-outline { border: 1px solid #333; color:white; }
-    .btn-outline:hover { background: #222; }
-
-    .tag { font-size: 10px; background: #333; padding: 2px 8px; border-radius: 4px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: inline-block; width: fit-content; }
-
-    @media (max-width: 768px) {
-      .contact-wrapper { grid-template-columns: 1fr; }
-      header { padding: 15px 20px; }
-      nav { display: none; }
-    }
-  </style>
+  @media (max-width: 600px) {
+    .projects { flex-direction: column; align-items: center; }
+  }
+</style>
 </head>
 <body>
+<div class="container">
 
-<header>
-  <div class="logo-container">
-    <img src="images/logo.jpg" alt="Delta Logo" class="logo-img">
-    <div>
-      <h2 style="margin:0; font-size:18px; letter-spacing: 1px;">DELTA AEROSPACE</h2>
-      <p style="margin:0; font-size:11px; opacity:0.5; text-transform: uppercase;">Flight Systems & Propulsion</p>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>Augie. Rockets. Chaos.</h1>
+    <p>Exploring the skies, one launch at a time 🚀</p>
+  </section>
+
+  <!-- About -->
+  <section class="about">
+    <p>I tinker with rockets, design cool parts, and make things fly. Also, a small dog king exists 🐶.</p>
+  </section>
+
+  <!-- Contact -->
+  <section class="contact">
+    <p>Follow the chaos or say hi:</p>
+    <div class="socials">
+      <a href="https://youtube.com/@chihuahualandinc" target="_blank">Youtube!</a>
     </div>
-  </div>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact" class="btn btn-outline" style="padding: 8px 16px;">Contact</a>
-  </nav>
-</header>
+  </section>
 
-<section class="hero">
-  <div class="hero-text">
-    <h1>Hardware for the next generation of flight.</h1>
-    <p style="font-size: 18px; opacity: 0.7; margin-bottom: 30px;">High-reliability flight computers and C++ frameworks for dual-deployment rocketry and static fire testing.</p>
-    <div style="display:flex; gap:15px;">
-      <a href="#projects" class="btn btn-primary">Browse Source</a>
-      <a href="https://deltaaerospace.bigcartel.com" class="btn btn-outline">Shop Now!</a>
-    </div>
-  </div>
-  <div class="hero-visual">
-    <h3 style="color: var(--accent);">System Status: Nominal</h3>
-    <p style="font-family: monospace; font-size: 13px; opacity: 0.8; background: #000; padding: 15px; border-radius: 8px;">
-      > Initializing Moses-Hank Framework...<br>
-      > Baro: MS5611 [ONLINE]<br>
-      > GPS: MAX-M10S [LOCKED]<br>
-      > State: IDLE_ON_PAD<br>
-      > Ready for launch.
-    </p>
-  </div>
-</section>
+</div>
 
-<section id="about">
-  <h2 style="font-size: 32px;">Built by Makers, Verified by Physics.</h2>
-  <p style="max-width:800px; font-size: 18px; opacity: 0.8;">We're tired of "black box" flight computers. Delta Aerospace builds open-source hardware and software that gives you full control over your recovery logic and telemetry data.</p>
-</section>
-
-<section id="projects">
-  <h2 style="margin-bottom: 30px;">Active Projects</h2>
-  <div class="card-grid">
-    <div class="card">
-      <div>
-        <span class="tag" style="color: var(--accent);">Software</span>
-        <h3 style="margin-top:0;">Moses-Hank-Framework</h3>
-        <p style="font-size: 14px; opacity: 0.8;">The official C++ / Arduino firmware framework for the Hank-DD. Features a modular state machine, sensor abstraction, and failsafe recovery logic.</p>
-      </div>
-      <a href="https://github.com/augiefromspace/Moses-Hank-Framework" target="_blank" style="color:var(--accent); text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 15px;">Github Repo →</a>
-    </div>
-
-    <div class="card">
-      <div>
-        <span class="tag" style="color: #ffaa00;">Hardware</span>
-        <h3 style="margin-top:0;">Hank Dual Deployment</h3>
-        <p style="font-size: 14px; opacity: 0.8;">ESP32-C3 based PCB. Compact 2-layer design supporting GPS, dual servos, and high-G logging.</p>
-      </div>
-      <a href="https://github.com/Delta-Aerospace/Hank-Dual-Deployment" target="_blank" style="color:var(--accent); text-decoration: none; font-size: 14px; font-weight: bold; margin-top: 15px;">Hardware Specs →</a>
-    </div>
-
-    <div class="card">
-      <div>
-        <span class="tag">In Dev</span>
-        <h3 style="margin-top:0;">Static Test Rigs</h3>
-        <p style="font-size: 14px; opacity: 0.8;">DAQ systems designed for load-cell integration to characterize custom solid motor thrust curves.</p>
-      </div>
-      <span style="font-size: 12px; color: #555; font-weight: bold; text-transform: uppercase; margin-top: 15px;">Beta Testing</span>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="contact-wrapper">
-    <div>
-      <h2>Let's talk shop.</h2>
-      <p style="opacity: 0.7;">Questions about the Moses framework or need custom avionics for your student team?</p>
-      <p style="margin-top: 20px; font-weight: bold; color: var(--accent);">augie@deltaaero.space</p>
-    </div>
-    
-    <form action="https://formspree.io/f/mbdllogl" method="POST">
-      <div class="form-group">
-        <label>Your Email</label>
-        <input type="email" name="_replyto" placeholder="engineer@deltaaero.space" required>
-      </div>
-      <div class="form-group">
-        <label>Message</label>
-        <textarea name="message" placeholder="Technical specs or inquiry..." required></textarea>
-      </div>
-      <input type="hidden" name="_subject" value="New Moses/Hank Inquiry">
-      <button type="submit" class="btn btn-primary" style="width: 100%;">Ignite Message</button>
-    </form>
-  </div>
-</section>
-
+<!-- Footer -->
 <footer>
-  <div style="max-width: 1100px; margin: auto; opacity: 0.5; font-size: 13px; text-align: center;">
-    <p>&copy; 2026 Delta Aerospace -  A Paris Group Project</p>
-  </div>
+  © 2026 Augiefrom.space
 </footer>
-
 </body>
 </html>
